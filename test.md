@@ -2,12 +2,12 @@
 
 Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook to use with both Apache Spark (or Hive) and relational databases. The library supports [SQLAlchemy](https://www.sqlalchemy.org/), (Spark Session and SparkSession)[https://docs.databricks.com/spark/latest/gentle-introduction/sparksession.html], and other connections types. The `%%readsql` magic function returns results as a Pandas DataFrame for further analysis and plotting. 
 
-~~~
+```
 %%readsql df_result
 SELECT {col_names}
 FROM {table_name}
 WHERE age < 10
-~~~
+```
 
 The core components of the sql_magic extension are:
 
