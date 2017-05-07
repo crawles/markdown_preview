@@ -1,6 +1,6 @@
-# Introducing `sql_magic`: Jupyter Magic For Working With Spark and Databases
+# Introducing sql_magic: Jupyter Magic for Using SQL With Apache Spark and Relational Databases
 
-Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. Thus I created this extension to facilitate writing SQL code from Jupyter Notebook with both Spark (or Hive) and relational databases. The %%readsql magic function returns results as a Pandas DataFrame further analysis and plotting. 
+Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook with both Spark (or Hive) and relational databases. The `%%readsql` magic function returns results as a Pandas DataFrame further analysis and plotting. 
 
 ~~~
 %%readsql df_result
@@ -11,11 +11,11 @@ WHERE age < 10
 
 The core components of the sql_magic extension are:
 
-Execute SQL from a Jupyter cell, returning the result as a Pandas dataframe
-Python variables can be embedded directly inside SQL code using the {string formatting} syntax
-Asynchronous query execution using the `-a` flag
-Browser notifications upon query completion
-SQL syntax highlighting inside a Jupyter cell
+* Execute SQL from a Jupyter cell, returning the result as a Pandas dataframe
+* Python variables can be embedded directly inside SQL code using the {string formatting} syntax
+* Asynchronous query execution using the `-a` flag
+* Browser notifications upon query completion
+* SQL syntax highlighting inside a Jupyter cell
 
 
 
@@ -25,7 +25,7 @@ SQL syntax highlighting inside a Jupyter cell
 
 More information can be found in the [GitHub repository](https://github.com/pivotal/sql_magic).
 
-## Example using a SQLAlchemy Connection Engine
+## Usage: An Example Using a SQLAlchemy Connection Engine
 
 Relational databases can be accessed using SQLAlchemy or any library implementing the (Python DB 2.0 Specification)[https://www.python.org/dev/peps/pep-0249/] the such as the (psycopg2)[http://initd.org/psycopg/].
 
@@ -35,7 +35,7 @@ from sqlalchemy import create_engine
 postgres_engine = create_engine('postgresql://{user}:{password}@{host}:5432/{database}'.format(**connect_credentials))
 ~~~
 
-The sql_magic library is loaded using the %load_ext iPython extension syntax. The connection object SQLConn.conn_object_name is configured using %config. 
+The sql_magic library is loaded using the `%load_ext` iPython extension syntax. The connection object `SQLConn.conn_object_name` is configured using `%config`. 
 
 ~~~
 #load and configure extension
