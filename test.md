@@ -1,13 +1,13 @@
 # Introducing sql_magic: Jupyter Magic for Using SQL With Apache Spark and Relational Databases
 
-Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook to use with both Apache Spark (or Hive) and relational databases. The library supports [SQLAlchemy](https://www.sqlalchemy.org/), (Spark Session and SparkSession)[https://docs.databricks.com/spark/latest/gentle-introduction/sparksession.html], and other connections types. The `%%readsql` magic function returns results as a Pandas DataFrame for further analysis and plotting. 
+Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook to use with both Apache Spark (or Hive) and relational databases. The library supports [SQLAlchemy](https://www.sqlalchemy.org/) connections, [Spark Session and SparkSession](https://docs.databricks.com/spark/latest/gentle-introduction/sparksession.html), and other connections types. The `%%readsql` magic function returns results as a Pandas DataFrame for further analysis and plotting. 
 
-```
+~~~
 %%readsql df_result
 SELECT {col_names}
 FROM {table_name}
 WHERE age < 10
-```
+~~~
 
 The core components of the sql_magic extension are:
 
@@ -25,9 +25,9 @@ The core components of the sql_magic extension are:
 
 More information can be found in the [GitHub repository](https://github.com/pivotal/sql_magic).
 
-## Usage: An Example Using a SQLAlchemy Connection Engine
+## Usage: Execute SQL on a PostgreSQL Database using SQLAlchemy
 
-Relational databases can be accessed using SQLAlchemy or any library implementing the (Python DB 2.0 Specification)[https://www.python.org/dev/peps/pep-0249/] the such as the (psycopg2)[http://initd.org/psycopg/].
+Relational databases can be accessed using SQLAlchemy or any library implementing the [Python DB 2.0 Specification](https://www.python.org/dev/peps/pep-0249/) the such as the [psycopg2](http://initd.org/psycopg/).
 
 ~~~
 #create SQLAlchemy engine for postgres
@@ -35,7 +35,7 @@ from sqlalchemy import create_engine
 postgres_engine = create_engine('postgresql://{user}:{password}@{host}:5432/{database}'.format(**connect_credentials))
 ~~~
 
-The sql_magic library is loaded using the `%load_ext` iPython extension syntax. The connection object `SQLConn.conn_object_name` is configured using `%config`. 
+The sql_magic library is loaded using the `%load_ext` iPython extension syntax. The SQLAlchemy engine object is specified as follows: 
 
 ~~~
 #load and configure extension
@@ -51,7 +51,7 @@ table_name = 'titanic'
 cols = ','.join(['age','sex','fare'])
 ~~~
 
-Finally, SQL code is executed with the %readsql cell magic. A browser notification will automatically appear once the query is finished.
+Finally, SQL code is executed with the %readsql cell magic. A browser notification containing the execution time and result dimensions will automatically appear once the query is finished.
 
 ~~~
 %%readsql df_result
@@ -72,7 +72,9 @@ Since results are automatically saved as a pandas dataframe, we can easily visua
 df.plot('age', 'fare',kind='scatter')
 ~~~
 
-Note: For code that doesn’t return a result, the `%%execsql` magic must be used (relational databases only).
+*SHOW PLOT HERE
+
+Note: For code that doesn’t return a result such as creating a table, the `%%execsql` magic must be used (relational databases only).
 
 ~~~
 %%execsql
@@ -82,16 +84,16 @@ SELECT *
 FROM table456 
 ~~~
 
-## sql_magic with Spark and/or Hive
+## sql_magic with Spark and Hive
 
-The syntax for connecting with Spark is the same as above with the difference being a Spark connection object must be provided for config.
+The syntax for connecting with Spark is the same as above; simply point the connection object to a SparkSession, SQLContext, or HiveContext object.:
 
 ~~~
-# spark 2.0+
+#spark 2.0+
 %config SQLConn.conn_object_name = 'spark'
 
-# spark 1.6 and before
-from pyspark.sql import HiveContext  # or sqlContext
+#spark 1.6 and before
+from pyspark.sql import HiveContext  # or SQLContext
 hive_context = HiveContext(sc)
 %config SQLConn.conn_object_name = 'hive_context'
 ~~~
