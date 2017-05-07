@@ -147,4 +147,4 @@ That’s it! Give sql_magic a try and let us know what you think. Anybody can co
 
 ### Acknowledgements
 
-Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
+Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
