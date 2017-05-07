@@ -84,7 +84,7 @@ SELECT *
 FROM table456 
 ~~~
 
-## sql_magic with Spark and Hive
+## Using sql_magic with Spark or Hive
 
 The syntax for connecting with Spark is the same as above; simply point the connection object to a SparkSession, SQLContext, or HiveContext object.:
 
@@ -100,7 +100,7 @@ hive_context = HiveContext(sc)
 
 ## Configuration
 
-Both browser notifications and displaying results to standard out are enabled by default. Either of these can be temporarily disabled with the -n and -d flags, respectively. They can also be disabled using the %config magic function.
+Both browser notifications and displaying results to standard out are enabled by default. Either of these can be temporarily disabled with the `-n` and `-d` flags, respectively. They can also be disabled using the `%config` magic function.
 
 ### Flags
 
@@ -120,8 +120,7 @@ optional arguments:
 
 ### Default values
 
-#alerts and display are automatically enabled
-%config SQLConn
+Notifications and auto-display can be disabled by default using `%config`. If this is done for either option, the flags above will temporarily enable these features.
 
 ~~~
 SQLConn options
