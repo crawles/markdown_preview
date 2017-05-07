@@ -1,6 +1,6 @@
 # Introducing sql_magic: Jupyter Magic for Using SQL With Apache Spark and Relational Databases
 
-Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook with both Spark (or Hive) and relational databases. The `%%readsql` magic function returns results as a Pandas DataFrame further analysis and plotting. 
+Data scientists love Jupyter Notebook, Python, and Pandas. And they also write SQL. I created sql_magic to facilitate writing SQL code from Jupyter Notebook to use with both Apache Spark (or Hive) and relational databases. The library supports [SQLAlchemy](https://www.sqlalchemy.org/), (Spark Session and SparkSession)[https://docs.databricks.com/spark/latest/gentle-introduction/sparksession.html], and other connections types. The `%%readsql` magic function returns results as a Pandas DataFrame for further analysis and plotting. 
 
 ~~~
 %%readsql df_result
@@ -70,6 +70,16 @@ Since results are automatically saved as a pandas dataframe, we can easily visua
 
 ~~~
 df.plot('age', 'fare',kind='scatter')
+~~~
+
+Note: For code that doesn’t return a result, the `%%execsql` magic must be used (relational databases only).
+
+~~~
+%%execsql
+CREATE TABLE table123
+AS
+SELECT *
+FROM table456 
 ~~~
 
 ## sql_magic with Spark and/or Hive
