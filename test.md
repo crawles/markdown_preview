@@ -20,8 +20,4 @@ The sql_magic library expands upon current libraries such as ipython sql and spa
 * Browser notifications for query completion
 * Results directly returned as Pandas dataframes 
 
-## Installation
-
-`pip install sql_magic`
-
-For more information check out the [GitHub repo](https://github.com/pivotal/sql_magic).
+For more information check out the [GitHub repository](https://github.com/pivotal/sql_magic).
