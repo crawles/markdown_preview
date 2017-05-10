@@ -10,7 +10,7 @@ FROM table_name
 WHERE age < {threshold}
 ```
 
-The sql_magic library expands upon current libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) with the following features: 
+The sql_magic library expands upon existing libraries such as [ipython-sql] with the following features: 
 
 * Support for both Apache Spark and relational databases
 * Asynchronous execution (useful for long queries)
@@ -59,9 +59,11 @@ FROM {table_name}
 WHERE age < 10
 ~~~
 
-*SHOW PLOT HERE
+A browser notification is displayed upon query completion.
 
-The code can be executed asynchronously using the -a flag. Asynchronous execution is particularly useful for running with long queries by running the query in the background, displaying a browser notification upon query completion.
+<img src='https://github.com/crawles/Logos/blob/master/notification_example.png?raw=true'>
+
+The code can be executed asynchronously using the -a flag. Asynchronous execution is particularly useful for running long queries in the background without blocking iPython kernel. The user is notified of a completed query via a browser notification.
 
 ~~~
 %%readsql df_result -a
@@ -70,12 +72,12 @@ The code can be executed asynchronously using the -a flag. Asynchronous executio
 Since results are automatically saved as a Pandas dataframe, we can easily visualize our results using the built-in Pandas’ plotting routines:
 
 ~~~
-df.plot('age', 'fare',kind='scatter')
+df.plot('age', 'fare', kind='scatter')
 ~~~
 
-*SHOW PLOT HERE
+<img src='https://github.com/crawles/Logos/blob/master/scatter.png?raw=true'>
 
-Note: For code that doesn’t return a result such as creating a table, the `%%execsql` magic must be used (relational databases only).
+For code that doesn’t return a result such as creating a table, the `%%execsql` magic must be used (relational databases only).
 
 ~~~
 %%execsql
@@ -142,7 +144,7 @@ SQLConn.output_result=<Bool>
 %config SQLConn.notify_result = False  # disable output to std ou
 ~~~
 
-That’s it! Give sql_magic a try and let us know what you think. Anybody can contribute improvements or bug fixes on the [GitHub repository](https://github.com/pivotal/sql_magic); just send a pull request.
+That’s it! Give sql_magic a try and let us know what you think. Please submit a pull request for any improvements or bug fixes.
 
 ### Acknowledgements
 
