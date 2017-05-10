@@ -24,4 +24,4 @@ The sql_magic library expands upon current libraries such as ipython sql and spa
 
 `pip install sql_magic`
 
-The project and more information is available on the [GitHub repo](https://github.com/pivotal/sql_magic).
+For more information check out the [GitHub repo](https://github.com/pivotal/sql_magic).
