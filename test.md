@@ -11,8 +11,8 @@ WHERE age < 10
 
 The sql_magic library expands upon current libraries such as ipython sql and spark magic with the following features: 
 
-    * Supports SQL queries for both Apache Spark and relational databases
-    * Asynchronous query execution (useful for running long non-blocking queries)
-    * Browser-based notifications for query completion
+    * Support  for both Apache Spark and relational databases
+    * Asynchronous execution (useful for long queries)
+    * Browser notifications for query completion
     * SQL syntax highlighting
-    * Results are directly returned to Pandas dataframes for analysis
+    * Results directly returned as Pandas dataframes 
