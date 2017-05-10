@@ -16,3 +16,4 @@ The sql_magic library expands upon current libraries such as ipython sql and spa
 * SQL syntax highlighting
 * Browser notifications for query completion
 * Results directly returned as Pandas dataframes 
+![alt text](img.png "Logo Title Text 1")
