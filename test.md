@@ -1,6 +1,6 @@
 # Introducing sql_magic: Jupyter Magic to Write SQL Code for Apache Spark and Relational Databases
 <p align="center">
-  <img src="img.png" width="60%" align="middle">
+  <img src="img.JPG" width="60%" align="middle">
 </p>
 
 # this is the new title
