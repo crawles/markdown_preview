@@ -17,4 +17,7 @@ The sql_magic library expands upon current libraries such as ipython sql and spa
 * Browser notifications for query completion
 * Results directly returned as Pandas dataframes 
 
-<img src="img.png" alt="Drawing" style="width: 100px;"/>
+
+<p align="center">
+  <img src="img.png" width="60%" align="middle">
+</p>
