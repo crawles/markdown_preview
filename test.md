@@ -1,4 +1,3 @@
-# Introducing sql_magic: Jupyter Magic to Write SQL Code for Apache Spark and Relational Databases
 <p align="center">
   <img src="img.jpg" width="60%" align="middle">
 </p>
@@ -21,3 +20,13 @@ The sql_magic library expands upon current libraries such as [ipython-sql](https
 * Results directly returned as Pandas dataframes 
 
 For more information check out the [GitHub repository](https://github.com/pivotal/sql_magic).
+
+Links:
+* [Jupyter Notebook](http://jupyter.org/)
+* [Pandas](http://pandas.pydata.org/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
+* [Pivotal Greenplum](https://pivotal.io/pivotal-greenplum)
+* [Pivotal HDB](https://pivotal.io/pivotal-hdb)
+* [Apache Spark](http://spark.apache.org/)
+* [ipython-sql](https://github.com/catherinedevlin/ipython-sql)
+
