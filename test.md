@@ -21,6 +21,8 @@ The sql_magic library expands upon current libraries such as [ipython-sql](https
 
 For more information check out the [GitHub repository](https://github.com/pivotal/sql_magic).
 
+---
+
 Links:
 * [Jupyter Notebook](http://jupyter.org/)
 * [Pandas](http://pandas.pydata.org/)
