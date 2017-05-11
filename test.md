@@ -29,4 +29,3 @@ Links:
 * [Pivotal HDB](https://pivotal.io/pivotal-hdb)
 * [Apache Spark](http://spark.apache.org/)
 * [ipython-sql](https://github.com/catherinedevlin/ipython-sql)
-
