@@ -24,6 +24,7 @@ For more information check out the [GitHub repository](https://github.com/pivota
 ---
 
 Links:
+* [GitHub repository](https://github.com/pivotal/sql_magic)
 * [Jupyter Notebook](http://jupyter.org/)
 * [Pandas](http://pandas.pydata.org/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
