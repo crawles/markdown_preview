@@ -3,9 +3,6 @@ sql_magic
 
 sql_magic is Jupyter magic for writing SQL to interact with Spark (or Hive) and relational databases. Query results are saved directly to a Pandas dataframe.
 
-<p>
-  <img src="https://github.com/crawles/Logos/blob/master/sql_magic.png?raw=true" align="right">
-</p>
 
 ```
 %%readsql df_result
@@ -13,6 +10,10 @@ SELECT *
 FROM table_name
 WHERE age < {threshold}
 ```
+
+<p>
+  <img src="https://github.com/crawles/Logos/blob/master/sql_magic.png?raw=true" width = 40% align="right">
+</p>
 
 The sql_magic library expands upon existing libraries such as [ipython-sql] with the following features: 
 
