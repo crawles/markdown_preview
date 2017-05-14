@@ -3,7 +3,6 @@ sql_magic
 
 sql_magic is Jupyter magic for writing SQL to interact with Spark (or Hive) and relational databases. Query results are saved directly to a Pandas dataframe.
 
-
 ```
 %%readsql df_result
 SELECT *
@@ -12,10 +11,10 @@ WHERE age < {threshold}
 ```
 
 <p>
-  <img src="https://github.com/crawles/Logos/blob/master/sql_magic.png?raw=true" width = 40% align="right">
+  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 40% align="right">
 </p>
 
-The sql_magic library expands upon existing libraries such as [ipython-sql] with the following features: 
+The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
 
 * Support for both Apache Spark and relational databases
 * Asynchronous execution (useful for long queries)
@@ -153,5 +152,4 @@ That’s it! Give sql_magic a try and let us know what you think. Please submit 
 
 ### Acknowledgements
 
-Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
-
+Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
