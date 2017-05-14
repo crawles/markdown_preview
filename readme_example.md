@@ -6,8 +6,9 @@ sql_magic
 sql_magic is Jupyter magic for writing SQL to interact with Spark (or Hive) and relational databases. Query results are saved directly to a Pandas dataframe.
 
 <p>
-  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 60% align="right">
+  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 100%>
 </p>
+
 ```
 %%readsql df_result
 SELECT *
