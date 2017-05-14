@@ -12,11 +12,13 @@ FROM table_name
 WHERE age < {threshold}
 ```
 
+
+The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
+
 <p>
   <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 60% align="right">
 </p>
 
-The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
 
 * Support for both Apache Spark and relational databases
 * Asynchronous execution (useful for long queries)
