@@ -1,6 +1,10 @@
 sql_magic
 =========
 
+<p>
+  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 80% align="center">
+</p>
+
 sql_magic is Jupyter magic for writing SQL to interact with Spark (or Hive) and relational databases. Query results are saved directly to a Pandas dataframe.
 
 ```
@@ -10,9 +14,6 @@ FROM table_name
 WHERE age < {threshold}
 ```
 
-<p>
-  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 40% align="right">
-</p>
 
 The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
 
@@ -153,3 +154,5 @@ That’s it! Give sql_magic a try and let us know what you think. Please submit 
 ### Acknowledgements
 
 Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
+
+
