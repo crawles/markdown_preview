@@ -29,7 +29,7 @@ See the included [Jupyter notebook](https://github.com/crawles/sql_magic/blob/ma
 
 ## Usage: Execute SQL on a PostgreSQL Database using SQLAlchemy
 
-Relational databases can be accessed using SQLAlchemy or any library implementing the [Python DB 2.0 Specification](https://www.python.org/dev/peps/pep-0249/) such as the [psycopg2](http://initd.org/psycopg/) Python library.
+Relational databases can be accessed using [SQLAlchemy](https://www.sqlalchemy.org/) or any library implementing the [Python DB 2.0 Specification](https://www.python.org/dev/peps/pep-0249/).
 
 ~~~
 # create SQLAlchemy engine for postgres
@@ -177,3 +177,6 @@ That’s it! Give sql_magic a try and let us know what you think. Please submit 
 ### Acknowledgements
 
 Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was inspired from and aided by the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) library.
+
+
+
