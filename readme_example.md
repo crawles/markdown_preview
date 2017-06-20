@@ -27,9 +27,9 @@ See the included [Jupyter notebook](https://github.com/crawles/sql_magic/blob/ma
 
 `pip install sql_magic`
 
-## Usage: Execute SQL on a PostgreSQL Database using SQLAlchemy
+## Usage: Execute SQL on a relational database
 
-Relational databases can be accessed using [SQLAlchemy](https://www.sqlalchemy.org/) or any library implementing the [Python DB 2.0 Specification](https://www.python.org/dev/peps/pep-0249/).
+Relational databases can be accessed using [SQLAlchemy](https://www.sqlalchemy.org/) or any library implementing the [Python DB 2.0 Specification](https://www.python.org/dev/peps/pep-0249/) (E.g., `psycopg2`, `sqlite3`, etc.).
 
 ~~~
 # create SQLAlchemy engine for postgres
@@ -37,15 +37,14 @@ from sqlalchemy import create_engine
 postgres_engine = create_engine('postgresql://{user}:{password}@{host}:5432/{database}'.format(**connect_credentials))
 ~~~
 
-The sql_magic library is loaded using the `%load_ext` iPython extension syntax and is pointed to the SQLAlchemy engine object as follows: 
+The sql_magic library is loaded using the `%load_ext` iPython extension syntax and is pointed to the connection object as follows: 
 
 ~~~
-# load and configure extension
 %load_ext sql_magic
 %config SQL.conn_name = 'postgres_engine'
 ~~~
 
-Python variables can be directly referenced in the SQL query using the string formatting syntax as sql_magic executes the code in the Jupyter cell as a string. 
+Python variables can be directly referenced in the SQL query using the string formatting syntax: 
 
 ~~~
 # variables for use in SQL query
@@ -53,7 +52,7 @@ table_name = 'titanic'
 cols = ','.join(['age','sex','fare'])
 ~~~
 
-Finally, SQL code is executed with the %read_sql cell magic. A browser notification containing the execution time and result dimensions will automatically appear once the query is finished.
+SQL code is executed with the %read_sql cell magic. A browser notification containing the execution time and result dimensions will automatically appear once the query is finished.
 
 ~~~
 %%read_sql df_result
@@ -62,11 +61,16 @@ FROM {table_name}
 WHERE age < 10
 ~~~
 
-SQL syntax is highlighted directly inside of Jupyter:
+SQL syntax is colored inside Jupyter: 
 
 <img src='https://github.com/crawles/Logos/blob/master/sql_magic_syntax.png?raw=true'>
 
-Queries can be run again additional connection objects (Spark, Hive or relational db connections) with the -c or --connection flag:
+A browser notification is displayed upon query completion.
+
+<img src='https://github.com/crawles/Logos/blob/master/notification_example.png?raw=true'>
+
+
+Queries can be run again additional connection objects (Spark, Hive or relational db connections) with the `-c` or `--connection` flag:
 
 ~~~
 #sql_magic supports all libraries following Python DB 2.0 Specification
@@ -81,11 +85,8 @@ FROM {table_name}
 WHERE age < 10
 ~~~
 
-A browser notification is displayed upon query completion.
 
-<img src='https://github.com/crawles/Logos/blob/master/notification_example.png?raw=true'>
-
-The code can be executed asynchronously using the -a flag. Asynchronous execution is particularly useful for running long queries in the background without blocking iPython kernel. The user is notified of a completed query via a browser notification.
+The code can be executed asynchronously using the -a flag. Asynchronous execution is particularly useful for running long queries in the background without blocking iPython kernel.
 
 ~~~
 %%read_sql df_result -a
@@ -99,7 +100,7 @@ df.plot('age', 'fare', kind='scatter')
 
 <img src='https://github.com/crawles/Logos/blob/master/scatter.png?raw=true'>
 
-Multi-line SQL statements are supported:
+Multi-line SQL statements are also supported:
 
 ~~~
 %%read_sql
@@ -112,7 +113,9 @@ FROM table456;
 
 Finally, line magic synatax is also available:
 
+~~~
 result = %read_sql SELECT * FROM table123;
+~~~
 
 ## Using sql_magic with Spark or Hive
 
@@ -177,6 +180,4 @@ That’s it! Give sql_magic a try and let us know what you think. Please submit 
 ### Acknowledgements
 
 Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was inspired from and aided by the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) library.
-
-
 
