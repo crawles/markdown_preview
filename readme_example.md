@@ -1,29 +1,24 @@
 sql_magic
 =========
 
-
-
 sql_magic is Jupyter magic for writing SQL to interact with Spark (or Hive) and relational databases. Query results are saved directly to a Pandas dataframe.
 
-<p>
-  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 100%>
-</p>
-
 ```
-%%readsql df_result
+%%read_sql df_result
 SELECT *
 FROM table_name
 WHERE age < {threshold}
 ```
 
+<p>
+  <img src="https://raw.githubusercontent.com/crawles/Logos/master/sql_magic_wide.png" width = 100%>
+</p>
+
 
 The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
-
-
-
-* Support for both Apache Spark and relational databases
+* Support for both Apache Spark and relational database connections simultaneously
 * Asynchronous execution (useful for long queries)
-* SQL syntax highlighting
+* SQL syntax coloring in Jupyter
 * Browser notifications for query completion
 * Results directly returned as Pandas dataframes 
 
@@ -48,7 +43,7 @@ The sql_magic library is loaded using the `%load_ext` iPython extension syntax a
 ~~~
 # load and configure extension
 %load_ext sql_magic
-%config SQLConn.conn_object_name = 'postgres_engine'
+%config SQL.conn_name = 'postgres_engine'
 ~~~
 
 Python variables can be directly referenced in the SQL query using the string formatting syntax as sql_magic executes the code in the Jupyter cell as a string. 
@@ -59,10 +54,26 @@ table_name = 'titanic'
 cols = ','.join(['age','sex','fare'])
 ~~~
 
-Finally, SQL code is executed with the %readsql cell magic. A browser notification containing the execution time and result dimensions will automatically appear once the query is finished.
+Finally, SQL code is executed with the %read_sql cell magic. A browser notification containing the execution time and result dimensions will automatically appear once the query is finished.
 
 ~~~
-%%readsql df_result
+%%read_sql df_result
+SELECT {cols}
+FROM {table_name}
+WHERE age < 10
+~~~
+
+
+Queries can be run again additional connection objects (Spark, Hive or relational db connections) with the -c or --connection flag:
+
+~~~
+#sql_magic supports all libraries following Python DB 2.0 Specification
+import psycopg2
+conn2 = psycopg2.connect(**connect_credentials)
+~~~
+
+~~~
+%%read_sql df_result -c conn2
 SELECT {cols}
 FROM {table_name}
 WHERE age < 10
@@ -75,7 +86,7 @@ A browser notification is displayed upon query completion.
 The code can be executed asynchronously using the -a flag. Asynchronous execution is particularly useful for running long queries in the background without blocking iPython kernel. The user is notified of a completed query via a browser notification.
 
 ~~~
-%%readsql df_result -a
+%%read_sql df_result -a
 ~~~
 
 Since results are automatically saved as a Pandas dataframe, we can easily visualize our results using the built-in Pandas’ plotting routines:
@@ -86,15 +97,20 @@ df.plot('age', 'fare', kind='scatter')
 
 <img src='https://github.com/crawles/Logos/blob/master/scatter.png?raw=true'>
 
-For code that doesn’t return a result such as creating a table, the `%%execsql` magic must be used (relational databases only).
+Multi-line SQL statements are supported:
 
 ~~~
-%%execsql
+%%read_sql
+DROP TABLE IF EXISTS table123;
 CREATE TABLE table123
 AS
 SELECT *
-FROM table456 
+FROM table456;
 ~~~
+
+Finally, line magic synatax is also available:
+
+result = %read_sql SELECT * FROM table123;
 
 ## Using sql_magic with Spark or Hive
 
@@ -102,12 +118,13 @@ The syntax for connecting with Spark is the same as above; simply point the conn
 
 ~~~
 # spark 2.0+
-%config SQLConn.conn_object_name = 'spark'
+#uses SparkContext
+%config SQL.conn_name = 'spark'
 
 # spark 1.6 and before
 from pyspark.sql import HiveContext  # or SQLContext
 hive_context = HiveContext(sc)
-%config SQLConn.conn_object_name = 'hive_context'
+%config SQL.conn_name = 'hive_context'
 ~~~
 
 ## Configuration
@@ -135,28 +152,29 @@ optional arguments:
 Notifications and auto-display can be disabled by default using `%config`. If this is done for either option, the flags above will temporarily enable these features.
 
 ~~~
-SQLConn options
+SQL options
 -------------
-SQLConn.conn_object_name=<Unicode>
+SQL.conn_name=<Unicode>
     Current: u'conn'
     Object name for accessing computing resource environment
-SQLConn.notify_result=<Bool>
+SQL.notify_result=<Bool>
     Current: True
     Notify query result to stdout
-SQLConn.output_result=<Bool>
+SQL.output_result=<Bool>
     Current: True
     Output query result to stdout
 ~~~
 
 ~~~
-%config SQLConn.output_result = False  # disable browser notifications
-%config SQLConn.notify_result = False  # disable output to std ou
+%config SQL.output_result = False  # disable browser notifications
+%config SQL.notify_result = False  # disable output to std ou
 ~~~
 
 That’s it! Give sql_magic a try and let us know what you think. Please submit a pull request for any improvements or bug fixes.
 
 ### Acknowledgements
 
-Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was also inspired from the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) and [sparkmagic](https://github.com/jupyter-incubator/sparkmagic) libraries.
+Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was inspired from and aided by the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) library.
+
 
 
