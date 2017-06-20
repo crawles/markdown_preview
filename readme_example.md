@@ -18,7 +18,6 @@ WHERE age < {threshold}
 The sql_magic library expands upon existing libraries such as [ipython-sql](https://github.com/catherinedevlin/ipython-sql) with the following features: 
 * Support for both Apache Spark and relational database connections simultaneously
 * Asynchronous execution (useful for long queries)
-* SQL syntax coloring in Jupyter
 * Browser notifications for query completion
 * Results directly returned as Pandas dataframes 
 
@@ -63,6 +62,9 @@ FROM {table_name}
 WHERE age < 10
 ~~~
 
+SQL syntax is highlighted directly inside of Jupyter:
+
+<img src='https://github.com/crawles/Logos/blob/master/sql_magic_syntax.png?raw=true'>
 
 Queries can be run again additional connection objects (Spark, Hive or relational db connections) with the -c or --connection flag:
 
@@ -175,6 +177,3 @@ That’s it! Give sql_magic a try and let us know what you think. Please submit 
 ### Acknowledgements
 
 Thank you to Scott Hajek, Greg Tam, and Srivatsan Ramanujam, along with the rest of the Pivotal Data Science team for their help in developing this library. Thank you to Lia and Jackie Ho for help with the diagram. This library was inspired from and aided by the work of the [ipython-sql](https://github.com/catherinedevlin/ipython-sql) library.
-
-
-
